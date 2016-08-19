@@ -27,7 +27,7 @@ def preprocess(imgs, to_rows=None, to_cols=None):
 
 class Learner(object):
     
-    suffix = '3'
+    suffix = ''
     res_dir = os.path.join(_dir, 'res' + suffix)
     best_weight_path = os.path.join(res_dir, 'unet.hdf5')
     test_mask_res = os.path.join(res_dir, 'imgs_mask_test.npy')
