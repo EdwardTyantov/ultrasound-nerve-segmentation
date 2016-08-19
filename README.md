@@ -1,8 +1,6 @@
 # Ultrasound nerve segmentation using Keras
 Kaggle Ultrasound Nerve Segmentation competition [Keras]
 
-This code based on https://github.com/jocicmarko/ultrasound-nerve-segmentation/
-
 #Install (Ubuntu 14/16, GPU)
 
 cuDNN required.
@@ -102,3 +100,6 @@ Final prediction uses probability of a nerve presence: p_nerve = (p_score + p_se
 - On GPU Titan X an epoch took about 6 minutes. Training early stops at 15-30 epochs.
 - Best single model achieved 0.694 LB score.
 - An ensemble of 6 different k-fold ensembles (5,6,8) scored 0.70399
+
+#Credits
+This code was originally based on https://github.com/jocicmarko/ultrasound-nerve-segmentation/
