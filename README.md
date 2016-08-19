@@ -96,10 +96,11 @@ For some reason validation split by patient (which is proper in this competition
 
 Final prediction uses probability of a nerve presence: p_nerve = (p_score + p_segment)/2, where p_segment based on number of output pixels in the mask.
 
-#Results and training aspects
+#Results and technical aspects
 - On GPU Titan X an epoch took about 6 minutes. Training early stops at 15-30 epochs.
+- For batch_size=64 6Gb GPU memory is required.
 - Best single model achieved 0.694 LB score.
-- An ensemble of 6 different k-fold ensembles (5,6,8) scored 0.70399
+- An ensemble of 6 different k-fold ensembles (k=5,6,8) scored 0.70399
 
 #Credits
 This code was originally based on https://github.com/jocicmarko/ultrasound-nerve-segmentation/
