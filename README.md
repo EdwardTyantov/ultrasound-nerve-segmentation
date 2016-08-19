@@ -3,7 +3,9 @@ Kaggle Ultrasound Nerve Segmentation competition [Keras]
 
 This code based on https://github.com/jocicmarko/ultrasound-nerve-segmentation/
 
-#Install (Ubuntu, GPU )
+#Install (Ubuntu 14/16, GPU)
+
+cuDNN required.
 
 ###Theano
 - http://deeplearning.net/software/theano/install_ubuntu.html#install-ubuntu
@@ -34,7 +36,9 @@ In ~/.keras/keras.json
 }
 ```
 
-Python deps: scikit-image, sklearn, opencv
+###Python deps
+ - sudo apt-get install python-opencv
+ - sudo apt-get install python-sklearn
 
 #Prepare
 
@@ -69,15 +73,15 @@ I used U-net like architecture (http://arxiv.org/abs/1505.04597). Main differenc
  - inception blocks instead of VGG like
  - Conv with stride instead of MaxPooling
  - Dropout, p=0.5
- - shortcuts with residual blocks
+ - skip connections from encoder to decoder layers with residual blocks
  - BatchNorm everywhere
- - 2 heads training: one branch for scoring (in the middle of the network), on branch for segmentation
+ - 2 heads training: auxiliary branch for scoring nerve presence (in the middle of the network), one branch for segmentation
  - ELU activation
- - sigmoid in output 
- - Adam optimizer 
- - Dice coeff loss
+ - sigmoid activation in output 
+ - Adam optimizer, without weight regularization in layers
+ - Dice coeff loss, average per batch, without smoothing
  - output layers - sigmoid activation
- - batch_size=64,128
+ - batch_size=64,128 (for GeForce 1080 and Titan X respectively)
 
 Augmentation:
  - flip x,y
@@ -85,7 +89,8 @@ Augmentation:
  - random channel shift
  - elastic transormation didn't help in this configuration
 
-Augmentation generator (generate augmented data on the fly for each epoch) didn't improve the score.
+Augmentation generator (generate augmented data on the fly for each epoch) didn't improve the score. 
+For prediction augmented images were used.
 
 Validation:
 
@@ -95,5 +100,5 @@ Final prediction uses probability of a nerve presence: p_nerve = (p_score + p_se
 
 #Results and training aspects
 - On GPU Titan X an epoch took about 6 minutes. Training early stops at 15-30 epochs.
-- Best single model achieved 0.694 LB score
-- Ensemble of different k-fold ensembles (5,6,8) scored 0.70399
+- Best single model achieved 0.694 LB score.
+- An ensemble of 6 different k-fold ensembles (5,6,8) scored 0.70399
