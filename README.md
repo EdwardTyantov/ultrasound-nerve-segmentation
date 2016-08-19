@@ -1,4 +1,4 @@
-# ultrasound-nerve-segmentation
+# Ultrasound nerve segmentation usining Keras
 Kaggle Ultrasound Nerve Segmentation competition [Keras]
 
 This code based on https://github.com/jocicmarko/ultrasound-nerve-segmentation/
@@ -51,6 +51,11 @@ python train.py
 ```
 Results will be generatated in "res/" folder. res/unet.hdf5 - best model
 
+Generate submission:
+```
+python submission.py
+```
+
 #Model
 
 I used U-net (http://arxiv.org/abs/1505.04597) architecture. Main features:
@@ -77,10 +82,7 @@ For some reason validation split by patient (which is right in this competition)
 
 Final prediction uses probability of nerve presence: (p_score + p_segment)/2, where p_segment based on number of output pixels in the mask.
 
-Generate submission:
-```
-python submission.py
-```
+
 
 #Results and training aspects
 - On GPU Titan X epoch took about 6 minutes. Best model on 16-28 epoch. 
