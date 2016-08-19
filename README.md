@@ -1,4 +1,4 @@
-# Ultrasound nerve segmentation usining Keras
+# Ultrasound nerve segmentation using Keras
 Kaggle Ultrasound Nerve Segmentation competition [Keras]
 
 This code based on https://github.com/jocicmarko/ultrasound-nerve-segmentation/
@@ -34,6 +34,8 @@ In ~/.keras/keras.json
 }
 ```
 
+Python deps: scikit-image, sklearn, opencv
+
 #Prepare
 
 Place train and test data into '../train' and '../test' folders accordingly.
@@ -54,6 +56,11 @@ Results will be generatated in "res/" folder. res/unet.hdf5 - best model
 Generate submission:
 ```
 python submission.py
+```
+
+Generate predection with a model in res/unet.hdf5
+``` 
+python current.py
 ```
 
 #Model
