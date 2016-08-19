@@ -36,6 +36,8 @@ In ~/.keras/keras.json
 
 #Prepare
 
+Place train and test data into '../train' and '../test' folders accordingly.
+
 ```
 mkdir np_data
 python data.py
