@@ -51,7 +51,38 @@ python train.py
 ```
 Results will be generatated in "res/" folder. res/unet.hdf5 - best model
 
+#Model
+
+I used U-net (http://arxiv.org/abs/1505.04597) architecture. Main features:
+ - inception blocks instead of VGG like
+ - Conv with stride instead of MaxPooling
+ - Dropout, p=0.5
+ - shortcuts with residual blocks
+ - BatchNorm everywhere
+ - 2 heads training: one branch for scoring (in the middle of the network), on branch for segmentation
+ - ELU activation
+ - sigmoid in output 
+ - Adam optimizer 
+ - Dice coeff loss
+ - output layers - sigmoid activation
+
+Augmentation:
+ - flip x,y
+ - random zoom
+ - random channel shift
+ - elastic transormation didn't help in this configuration
+
+Validation:
+For some reason validation split by patient (which is right in this competition) didn't work for me, probably due to bug in the code. So I used random split.
+
+Final prediction uses probability of nerve presence: (p_score + p_segment)/2, where p_segment based on number of output pixels in the mask.
+
 Generate submission:
 ```
 python submission.py
 ```
+
+#Results and training aspects
+- On GPU Titan X epoch took about 6 minutes. Best model on 16-28 epoch. 
+- Best model achieved 0.694 LD score
+- Ensemble of different k-fold ensembles (5,6,8) scored 0.70399
