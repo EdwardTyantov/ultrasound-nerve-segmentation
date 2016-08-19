@@ -81,9 +81,10 @@ Augmentation:
 Augmentation generator (generate augmented data on the fly for each epoch) didn't improve the score.
 
 Validation:
+
 For some reason validation split by patient (which is proper in this competition) didn't work for me, probably due to bug in the code. So I used random split.
 
-Final prediction uses probability of nerve presence: p_nerve = (p_score + p_segment)/2, where p_segment based on number of output pixels in the mask.
+Final prediction uses probability of a nerve presence: p_nerve = (p_score + p_segment)/2, where p_segment based on number of output pixels in the mask.
 
 #Results and training aspects
 - On GPU Titan X an epoch took about 6 minutes. Training early stops at 15-30 epochs.
