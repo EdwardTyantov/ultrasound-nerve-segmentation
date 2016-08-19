@@ -87,5 +87,5 @@ Final prediction uses probability of nerve presence: p_nerve = (p_score + p_segm
 
 #Results and training aspects
 - On GPU Titan X an epoch took about 6 minutes. Training early stops at 15-30 epochs.
-- Best single model achieved 0.694 LD score
+- Best single model achieved 0.694 LB score
 - Ensemble of different k-fold ensembles (5,6,8) scored 0.70399
