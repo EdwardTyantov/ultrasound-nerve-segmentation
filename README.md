@@ -70,6 +70,7 @@ I used U-net (http://arxiv.org/abs/1505.04597) architecture. Main features:
  - Adam optimizer 
  - Dice coeff loss
  - output layers - sigmoid activation
+ - batch_size=64,128
 
 Augmentation:
  - flip x,y
@@ -80,11 +81,11 @@ Augmentation:
 Validation:
 For some reason validation split by patient (which is right in this competition) didn't work for me, probably due to bug in the code. So I used random split.
 
-Final prediction uses probability of nerve presence: (p_score + p_segment)/2, where p_segment based on number of output pixels in the mask.
+Final prediction uses probability of nerve presence: p_nerve = (p_score + p_segment)/2, where p_segment based on number of output pixels in the mask.
 
 
 
 #Results and training aspects
-- On GPU Titan X epoch took about 6 minutes. Best model on 16-28 epoch. 
+- On GPU Titan X an epoch took about 6 minutes. Training early stops at 15-30 epochs.
 - Best model achieved 0.694 LD score
 - Ensemble of different k-fold ensembles (5,6,8) scored 0.70399
