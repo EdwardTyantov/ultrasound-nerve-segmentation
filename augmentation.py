@@ -215,7 +215,7 @@ def elastic_transform(image, mask, alpha, sigma, alpha_affine=None, random_state
 def test():
     X = np.random.randint(0,100, (1000, 1, 100, 200))
     YY = [np.random.randint(0,100, (1000, 1, 100, 200)), np.random.random((1000, 1))]
-    cid = CustomImageDataGenerator(horizontal_flip=True)
+    cid = CustomImageDataGenerator(horizontal_flip=True, elastic=(100,20))
     gen = cid.flow(X, YY, batch_size=64, shuffle=False)
     n = gen.next()[0]
     
