@@ -24,7 +24,7 @@ enabled = True
 - sudo pip install nose_parameterized
 - sudo pip install keras
 
-In ~/.keras/keras.json
+In ~/.keras/keras.json (it's very important, the project was running on theano backend, and some issues are possible in case of TensorFlow)
 ```
 {
     "image_dim_ordering": "th",
