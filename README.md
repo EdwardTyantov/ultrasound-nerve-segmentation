@@ -67,6 +67,8 @@ python current.py
 
 #Model
 
+Motivation's explained in my internal pres (slides: http://www.slideshare.net/Eduardyantov/ultrasound-segmentation-kaggle-review)
+
 I used U-net like architecture (http://arxiv.org/abs/1505.04597). Main differences:
  - inception blocks instead of VGG like
  - Conv with stride instead of MaxPooling
