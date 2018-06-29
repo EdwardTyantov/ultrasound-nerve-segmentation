@@ -1,4 +1,4 @@
-# Ultrasound nerve segmentation using Keras
+# Ultrasound nerve segmentation using Keras (1.0.7)
 Kaggle Ultrasound Nerve Segmentation competition [Keras]
 
 #Install (Ubuntu {14,16}, GPU)
